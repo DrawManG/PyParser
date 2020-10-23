@@ -18,8 +18,8 @@ class Example(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.url = "https://sun9-65.userapi.com/c858216/v858216128/2224e1/G2PVPHEk8wY.jpg"
-        self.url_txt = "https://raw.githubusercontent.com/DrawManG/TextQt5/master/main.py"
+        self.url = "https://sun9-65.userapi.com/c858216/v858216128/2224e1/G2PVPHEk8wY.jpg" #Ссылка на картинку
+        self.url_txt = "https://raw.githubusercontent.com/DrawManG/TextQt5/master/main.py" #Ссылка на текст из гита рава
         grid = QGridLayout()
         self.lab = QVBoxLayout()
         self.setLayout(self.lab)
@@ -40,16 +40,16 @@ class Example(QWidget):
         self.show()
 
 
-    def but1click(self):
+    def but1click(self): # нажатие на кнопку
         self.text()
         self.picture()
 
-    def text(self):
+    def text(self): #функция по парсингу текста
         con = urlopen(self.url_txt).read()
         soup = BeautifulSoup(con, 'html.parser')
         texts = soup.get_text()
         self.txtParse.setText(texts)
-    def picture(self):
+    def picture(self): #функция по парсингу картинки
         self.name_image_1 = 'img.png'
         img = urllib.request.urlopen(self.url).read()
         out = open(self.name_image_1, "wb")
@@ -59,7 +59,7 @@ class Example(QWidget):
         out.close()
         os.remove(self.name_image_1)
 
-class Qmessa(QMessageBox):
+class Qmessa(QMessageBox): # класс сообщений
     def __init__(self, a):
         super().__init__()
         msg = QMessageBox()
